@@ -71,6 +71,40 @@ public class Graph {
         return null; // todo
     }
 
+    public int weight(String fromNode, String toNode) {
+        assertNodeExists(fromNode);
+        assertNodeExists(toNode);
+        return MATRIX.getVal(nodeIndex(fromNode), nodeIndex(toNode));
+    }
+
+    public int weight(String... nodes) {
+        if (nodes == null || nodes.length < 2) {
+            throw new IllegalArgumentException("at least 2 nodes required");
+        }
+
+        if (nodes.length == 2) {
+            return weight(nodes[0], nodes[1]);
+        }
+
+        int len = nodes.length;
+        String[] nodeArr = new String[len - 1];
+        System.arraycopy(nodes, 0, nodeArr, 0, len - 1);
+        return weight(nodeArr) + weight(nodes[len - 2], nodes[len - 1]);
+    }
+
+    private void assertNodeIndexRange(int index) {
+        if (index < 0 || index > NODE.size() - 1) {
+            throw new IllegalArgumentException("node index is out of range");
+        }
+    }
+
+    private void assertNodeExists(String node) {
+        if (!NODE.contains(node)) {
+            throw new IllegalArgumentException("node is not exists: " + node);
+        }
+    }
+
+
     @Override
     public String toString() {
         return MATRIX.toString();
