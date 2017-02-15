@@ -33,11 +33,11 @@ public class Trains {
 
         // #4 distance of route A-E-B-C-D
         Route r4 = graph.route("A", "E", "B", "C", "D");
-        System.out.println("Output #3: " + (r4.isEmpty() ? "NO SUCH ROUTE" : "" + r4.getDistance()));
+        System.out.println("Output #4: " + (r4.isEmpty() ? "NO SUCH ROUTE" : "" + r4.getDistance()));
 
         // #5 distance of route A-E-D
         Route r5 = graph.route("A", "E", "D");
-        System.out.println("Output #3: " + (r5.isEmpty() ? "NO SUCH ROUTE" : "" + r5.getDistance()));
+        System.out.println("Output #5: " + (r5.isEmpty() ? "NO SUCH ROUTE" : "" + r5.getDistance()));
 
         // #6 num of route C-C with max 3 stop
         List<Route> l6 = graph.findRouteByStopLess("C", "C", 3);
